@@ -1,0 +1,29 @@
+*** Starting uWSGI 2.0.7 (64bit) on [Fri Sep  5 21:30:50 2014] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.40) on 05 September 2014 18:44:34
+os: Darwin-13.2.0 Darwin Kernel Version 13.2.0: Thu Apr 17 23:03:13 PDT 2014; root:xnu-2422.100.13~1/RELEASE_X86_64
+nodename: mac007.local
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /Users/chenshan/Desktop/magnet/bin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:5000 fd 3
+Python version: 2.7.5 (default, Mar  9 2014, 22:15:05)  [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fe0787006b0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 100048 bytes (97 KB) for 1 cores
+*** Operational MODE: single process ***
+added ../bin/ to pythonpath.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7fe0787006b0 pid: 9916 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9916, cores: 1)
+uwsgi_proto_uwsgi_parser(): Resource temporarily unavailable [proto/uwsgi.c line 40]

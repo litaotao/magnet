@@ -1,0 +1,9 @@
+<uwsgi>
+<socket>127.0.0.1:5000</socket>
+<pythonpath>../bin</pythonpath>
+<module>magnet</module>
+<callable>app</callable>
+<processes>1</processes>
+<buffer-size>31384</buffer-size>
+<daemonize>../logs/uwsgi.log</daemonize>
+</uwsgi>

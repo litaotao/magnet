@@ -1,0 +1,64 @@
+Jul.23rd.2014
+	prepare skill database, each skill have a score between 0 and 1, and 
+	the larger the value is, the more proficient one has gained.
+	make the preparation of skill database done;
+	use kNN to find the similar ones---at least half.
+java:
+	java
+	j2ee
+
+c++:
+	c++
+	
+python:
+	python
+
+javascript:
+	javascript
+	backbone
+	requireJS
+	grunt
+	gulp
+	underscore
+	angularJS
+	Jquery
+	sencha
+	highchart
+	highstock
+	less	
+	sass
+	compass
+	ugify
+
+	
+test:
+	junit
+	selenium
+	testng
+
+os:
+	linux
+	windows
+	sheel
+	
+database:
+	mysql
+	sql
+	nosql
+
+
+web:
+	tomcat
+	axis2
+	axis
+
+architecture:
+	soa
+	synapse
+	ode
+
+
+whole-computer:
+		
+Jul.30th.2014
+	re-design database.

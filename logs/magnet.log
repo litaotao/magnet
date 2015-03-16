@@ -1,0 +1,10 @@
+Fri, 01 Aug 2014 21:17:19 _internal.py[line:87] INFO  * Detected change in '/Users/chenshan/Desktop/magnet/lib/server.py', reloading
+Fri, 01 Aug 2014 21:17:49 _internal.py[line:87] INFO  * Detected change in '/Users/chenshan/Desktop/magnet/lib/src/support.py', reloading
+Fri, 01 Aug 2014 21:18:18 _internal.py[line:87] INFO  * Detected change in '/Users/chenshan/Desktop/magnet/lib/src/support.py', reloading
+Fri, 01 Aug 2014 21:18:21 _internal.py[line:87] INFO  * Running on http://0.0.0.0:5000/
+Fri, 01 Aug 2014 21:18:37 _internal.py[line:87] INFO  * Running on http://0.0.0.0:5000/
+Fri, 01 Aug 2014 21:18:37 _internal.py[line:87] INFO  * Restarting with reloader
+Fri, 01 Aug 2014 21:18:56 _internal.py[line:87] INFO  * Detected change in '/Users/chenshan/Desktop/magnet/lib/src/__init__.py', reloading
+Fri, 01 Aug 2014 21:18:56 _internal.py[line:87] INFO  * Restarting with reloader
+Fri, 01 Aug 2014 21:19:02 _internal.py[line:87] INFO  * Restarting with reloader
+Fri, 01 Aug 2014 21:19:09 _internal.py[line:87] INFO  * Restarting with reloader

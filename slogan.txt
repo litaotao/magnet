@@ -1,0 +1,103 @@
+<script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths:{ 
+                                        'echarts' : 'http://echarts.baidu.com/build/echarts',
+                                        'echarts/chart/line' : 'http://echarts.baidu.com/build/echarts'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/line' 
+                                    ],
+                                    function (ec) {
+                                        var myChart = ec.init(document.getElementById('line')); 
+                                        option = {
+                                            title : {
+                                                text: 'Rank Detail',
+                                                subtext: 'Keep going, don\'t settle',
+                                                x: 'center'
+                                            },
+                                            tooltip : {
+                                                trigger: 'axis'
+                                            },
+                                            legend: {
+                                                data:['world','your first level relationship'],
+                                                x: 'left'
+                                            },
+                                            toolbox: {
+                                                show : true,
+                                                feature : {
+                                                    mark : {
+                                                        show : true,
+                                                        lineStyle : {width: 1, color: '#1e90ff', type: 'dashed'
+                                                        }
+                                                    },
+                                                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                                                    restore : {show: true},
+                                                    saveAsImage : {show: true},
+                                                    dataZoom : {show : true, realtime: true},
+                                                },
+                                            },
+                                            xAxis : [
+                                                    {
+                                                        type : 'category',
+                                                        boundaryGap : false,
+                                                        axisLine: {onZero: true},
+                                                        data : [0,1,2,3,4,5,6,7,8,9]
+                                                    }
+                                            ],
+                                            yAxis : [
+                                                    {
+                                                        name : 'New score',
+                                                        type : 'value',
+                                                        max : 50
+                                                    },
+                                                    {
+                                                        name : 'Origin score',
+                                                        type : 'value',
+                                                        axisLabel : {formatter: function(v){return - v;}}
+                                                    }
+                                            ],
+                                            series : [
+                                                    {
+                                                        name:'world',
+                                                        type:'line',
+                                                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                                                        data:[1,2,3,4,5,6,7,8,9],
+                                                        markPoint : {
+                                                            data: [{name: 'you rank 50/102 in the world', value: '^_^', xAxis: 8, yAxis: 10}]
+                                                        }
+                                                    },
+                                                    {
+                                                        name:'your first level relationship',
+                                                        type:'line',
+                                                        yAxisIndex:1,
+                                                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                                                        data:[-1,-2,-3,-4,-5,-4,-3,-2,-1],
+                                                        markPoint : {data : [{name: 'you rank 5/10 in your first level relationship', value: '^_^', xAxis: 4, yAxis: -3}]}
+                                                    }
+                                            ]
+                                        };
+                                        var ecConfig = require('echarts/config');
+                                        function focus(param) {
+                                            var data = param.data;
+                                            var links = option.series[0].links;
+                                            var nodes = option.series[0].nodes;
+                                            if (data.source !== undefined && data.target !== undefined) { //点击的是边
+                                                var sourceNode = nodes[data.source];
+                                                var targetNode = nodes[data.target];
+                                                console.log("选中了边 " + sourceNode.name + ' -> ' + targetNode.name + ' (' + data.weight + ')');
+                                            } else { 
+                                                console.log("选中了" + data.name + '(' + data.value + ')');
+                                            }
+                                            console.log(param);
+                                        }
+                                        myChart.on(ecConfig.EVENT.CLICK, focus)
+                                                myChart.setOption(option); 
+                                        }
+                                    );
+                    </script>

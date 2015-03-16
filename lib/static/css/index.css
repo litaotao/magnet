@@ -1,0 +1,84 @@
+html {
+	background-color: rgb(6, 19, 37);
+}
+
+body {
+	padding-right: 100px;
+	padding-left: 100px;
+	padding-bottom: 0;
+	background-color: rgb(247, 247, 247);
+}
+
+.chart {
+	height: 300px;
+	margin-bottom:10px;
+}
+
+.my_select2{
+	width: 160px;
+	height:28px;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-bottom:0px;
+}
+
+.my_button{
+	width: 162px;
+    font-size: large;
+    /*font-weight: bolder;*/
+    color: #333333;
+	background-color: #f3f3f3;
+	border-bottom-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	background: #f9f9f9;
+}
+
+.user_input{
+	width: 100px;
+}
+
+.my_select{
+	height:28px;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-bottom:0px;
+}
+
+.my_button_2{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	color: #333333;
+	background-color: #f3f3f3;
+	border-bottom-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	background: #f9f9f9;
+	margin-left: 50px;
+}
+
+.my_button_3{
+  /*width: 30px;*/
+  /*height: 30px;*/
+  /*border-radius: 50%;*/
+  color: #333333;
+  background-color: #e6e6e6;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  background: #e6e6e6;
+  padding-right: 15px;
+}
+.error_msg{
+	margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.first_time{
+	color: red;
+}
