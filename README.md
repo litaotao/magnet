@@ -15,3 +15,20 @@ A light social network which help you maintain your past, strengthen your presen
 ### 
 This tutorial will give you a simple introduction to how to run an instance of this project on your own computer, your institution or your company.
 To make it as easily and trackable as possible, I'll help you deploy an instance step by step.
+
+## Some screenshot
+
+### login page
+![magnet-login.jpg](http://litaotao.github.io/images/magnet-login.jpg)
+
+### main page
+![magnet-main.jpg](http://litaotao.github.io/images/magnet-main.jpg)
+
+### personal page
+![magnet-personal.jpg](http://litaotao.github.io/images/magnet-personal.jpg)
+
+### statistic page
+![magnet-statistic.jpg](http://litaotao.github.io/images/magnet-statistic.jpg)
+
+### vote page
+![magnet-vote.jpg](http://litaotao.github.io/images/magnet-vote.jpg)
