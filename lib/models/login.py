@@ -49,6 +49,7 @@ class Login(Resource):
         return build_response(dict(code = 200, data = ['POST, OPTIONS']))
 
 
+
 class Register(Resource):
     """注册"""        
     def post(self):
