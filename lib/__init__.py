@@ -1,31 +1,66 @@
+# -*- coding: utf-8 -*-
 
-### init flask app
-from flask import Flask, request, send_file, Response, render_template
+"""
+    __init__.py
+    ~~~~~~~~~~~~
+
+    Initial all context in this file. Configure file read, and database connection.
+    Should stress that we should import server.py in the last, then when files/modules
+    changed which are imported in server.py, the app will reload automatically when 
+    app.Debug is True.
+
+    :Author: taotao.li
+    :last updated: Mar.18th.2015
+"""
+
+import ConfigParser
+from pymongo import MongoClient
+from flask import Flask
 from flask.ext.restful import Api
 
+
+cf = ConfigParser.ConfigParser()
+cf.read('../etc/magnet.conf')
+if cf.has_section('server'):
+    pass
+else:
+    cf.read('../../etc/magnet.conf')
+
+
+## app server
+server_addr = cf.get('server', 'server_addr')
+server_port = cf.get('server', 'server_port')
+
+
+## mongo server
+mongo_host = cf.get('mongo', 'mongo_host')
+mongo_port = cf.get('mongo', 'mongo_port')
+local_test = cf.get('mongo', 'local_test')
+
+
+##
+admin_list = cf.get('admin', 'users')
+admin_list = admin_list.replace(' ', '').split(';')
+
+
+if local_test.upper() == 'TRUE':
+    mongo_client = MongoClient(host=mongo_host, port=int(mongo_port))
+else:
+    mongo_client = MongoClient(host=mongo_host, port=int(mongo_port))
+    try:
+        mongo_client.community.authenticate(mongo_user, mongo_pass)
+    except:
+        error.error('mongodb connect or authenticate failed')
+
+## init database map
+db = dict(links = mongo_client.magnet.links, people = mongo_client.magnet.people,
+          node = mongo_client.magnet.node, vote = mongo_client.magnet.vote)
+
+## init flask app
 app = Flask(__name__, static_url_path='/static', static_folder='static',)
 app.secret_key = "wow, this girl send a ^_^ to me, what does that mean?"
 api = Api(app)
 
-### init config file
-import ConfigParser
-cf = ConfigParser.ConfigParser()
-cf.read('../etc/magnet.conf')
 
-server_addr = cf.get('server', 'server_addr')
-server_port = int(cf.get('server', 'server_port'))
+import server
 
-mongo_host = cf.get('mongo', 'host')
-mongo_port = int(cf.get('mongo', 'port'))
-
-debuglog = cf.get('debug', 'debuglog')
-
-allow_user = cf.get('statistic', 'allow')
-
-vote_admin = cf.get('voteAdmin', 'vote_admin')
-###
-if __name__ == '__main__':
-	print allow_user
-	print 'yalong.chen' in allow_user
-	# app.run(host=server_addr, port=server_port, debug=True)
-	# print mongo_host
