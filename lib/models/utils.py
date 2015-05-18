@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 """
-	utils.py
-	~~~~~~~~~~~~
+    utils.py
+    ~~~~~~~~~~~~
 
-	utilities for models use, some common used functions.
+    utilities for models use, some common used functions.
 
-	:Author: taotao.li
-	:last updated: May.18th.2014
+    :Author: taotao.li
+    :last updated: May.18th.2014
 """
 
 from flask import request, redirect
@@ -17,9 +17,13 @@ import json
 
 
 def build_response(content, code=200):
-	"""Build response, add headers"""
-	response = make_response( jsonify(content), content['code'] )
-	response.headers['Access-Control-Allow-Origin'] = '*'
-	response.headers['Access-Control-Allow-Headers'] = \
-			'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-	return response
+    """Build response, add headers"""
+    response = make_response( jsonify(content), content['code'] )
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = \
+            'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    return response
+
+def gen_user_context(user, pwd):
+    """Build an user context for a new user"""
+    return dict(user = user, pwd = [pwd], profile = {}, relation = {})

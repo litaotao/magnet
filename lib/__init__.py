@@ -53,7 +53,7 @@ else:
         error.error('mongodb connect or authenticate failed')
 
 ## init database map
-db = dict(links = mongo_client.magnet.links, people = mongo_client.magnet.people,
+db = dict(link = mongo_client.magnet.link, user = mongo_client.magnet.user,
           node = mongo_client.magnet.node, vote = mongo_client.magnet.vote)
 
 ## init flask app

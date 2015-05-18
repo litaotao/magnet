@@ -18,7 +18,7 @@ from flask import request, send_file, Response, render_template, redirect, g
 from . import app, api, admin_list
 
 # import models for API interface
-from models.login import Home
+from models.login import Home, Login, Register
 
 
 
@@ -37,6 +37,8 @@ def before():
 '''
 # home page
 api.add_resource(Home, '/')
+api.add_resource(Login, '/login')
+api.add_resource(Register, '/register')
 
 
 # # 1
