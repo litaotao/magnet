@@ -24,6 +24,17 @@ def build_response(content, code=200):
             'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     return response
 
-def gen_user_context(user, pwd):
-    """Build an user context for a new user"""
-    return dict(user = user, pwd = [pwd], profile = {}, relation = {})
+def gen_user_context(user, pwd, data = None):
+    """Build an user context for a new user""" 
+    profile = {age = 0, school = '', degree = '', gender = '', location = ''}
+    resume = {field = [], hobby = [], skill = [], tag = []}
+    relation = {ratetimes = 0, record = []} # record = [(), (),]
+
+    if data:
+        for i in data:
+            profile[i] = data[i] if i in profile
+            resume[i] = data[i] if i in resume
+            relation[i] = data[i] if i in relation
+
+    return dict(user = user, pwd = [pwd], profile = profile, ,
+                resume = resume, relation = relation)
