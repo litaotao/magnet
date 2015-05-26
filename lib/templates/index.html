@@ -50,11 +50,11 @@
                     <li><h4 style="font-family: cursive;color: #428BCA;font-kerning: initial;">Relation</h4></li>
 					<li><a>                  </a></li>
 					<li>
-						<a id="number_1">There are {{Number_1}} people</a>
+						<a id="number_1">There are {{totalUser}} people</a>
 					</li>
 					<li><a>                  </a></li>
 					<li>
-						<a id="number_2">There are {{Number_2}} relationships</a>
+						<a id="number_2">There are {{totalRelationship}} relationships</a>
 					</li>
 					<li id="user" class="pull-right" >
 						<a id="first_time" onclick="user()" class="first_time" title="Your password is default, please click to change your password"><span class="glyphicon glyphicon-user first_time"></span> {{user}}</a>
@@ -88,19 +88,15 @@
 						<tbody>
 							<tr class="info">
 								<td >Earned score</td>
-								<td >{{new_score}}</td>
-							</tr>
-							<tr class="warning">
-								<td>Rated Times</td>
-								<td>{{rate_time}}</td>
+								<td >{{newScore}}</td>
 							</tr>
 							<tr class="success">
 								<td>People in total</td>
-								<td>{{Number_3}}</td>
+								<td>{{totalKnowMe}}</td>
 							</tr>
 							<tr class="danger">
 								<td>People rate you</td>
-								<td>{{Number_4}}</td>
+								<td>{{rateMe}}</td>
 							</tr>
 							<tr class="active">
 								<td><div class="control-group">

@@ -26,15 +26,28 @@ def build_response(content, code=200):
 
 def gen_user_context(user, pwd, data = None):
     """Build an user context for a new user""" 
-    profile = {age = 0, school = '', degree = '', gender = '', location = ''}
-    resume = {field = [], hobby = [], skill = [], tag = []}
-    relation = {ratetimes = 0, record = []} # record = [(), (),]
+    profile = dict(age = 0, school = '', degree = '', gender = '', location = '')
+    resume = dict(field = [], hobby = [], skill = [], tag = [])
+    relation = dict(record = [], new_score = 0) # record = [(), (),]
 
     if data:
         for i in data:
-            profile[i] = data[i] if i in profile
-            resume[i] = data[i] if i in resume
-            relation[i] = data[i] if i in relation
+            profile[i] = data[i] if i in profile else None
+            resume[i] = data[i] if i in resume else None
+            relation[i] = data[i] if i in relation else None
 
-    return dict(user = user, pwd = [pwd], profile = profile, ,
+    return dict(user = user, pwd = [pwd], profile = profile,
                 resume = resume, relation = relation)
+
+'''
+# A simple wrapper, print func name when been executed.
+'''
+def print_func_name(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print 'start execute {} ...'.format(func.__name__)
+        result = func(*args, **kwargs)
+        print 'end execute {} ...'.format(func.__name__)
+        return result
+    return wrapper
+

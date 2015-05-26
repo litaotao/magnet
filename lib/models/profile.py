@@ -11,12 +11,6 @@
 """
 
 
-def get_profile(user):
-    '''
-    get personal data in their main page, Contains:
-    1. 
-    '''
-
 def know_rate_me(user):
     '''
     Get the total number of people who knows me and the number

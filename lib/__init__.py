@@ -53,8 +53,8 @@ else:
         error.error('mongodb connect or authenticate failed')
 
 ## init database map
-db = dict(link = mongo_client.magnet.link, user = mongo_client.magnet.user,
-          node = mongo_client.magnet.node, vote = mongo_client.magnet.vote)
+db = dict(link = mongo_client.magnet2.link, user = mongo_client.magnet2.user,
+          node = mongo_client.magnet2.node, vote = mongo_client.magnet2.vote)
 
 ## init flask app
 app = Flask(__name__, static_url_path='/static', static_folder='static',)
