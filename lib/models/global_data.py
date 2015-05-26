@@ -19,7 +19,7 @@ def get_total_user_relation():
 	获取当前所有用户的关系数量.
 	'''
 	t_people = db['node'].find().count()
-	t_relationships = db['links'].find().count()
+	t_relationships = db['link'].find().count()
 
 	return t_people, t_relationships
 
