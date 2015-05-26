@@ -2,4 +2,4 @@
 
 ### this is a package
 
-import utils
+from utils import *

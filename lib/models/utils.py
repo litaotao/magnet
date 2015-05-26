@@ -11,6 +11,7 @@
 """
 
 from flask import request, redirect
+from functools import wraps
 from flask import make_response, jsonify, Response
 from lib import admin_list
 import json 
@@ -47,7 +48,7 @@ def print_func_name(func):
     def wrapper(*args, **kwargs):
         print 'start execute {} ...'.format(func.__name__)
         result = func(*args, **kwargs)
-        print 'end execute {} ...'.format(func.__name__)
+        print 'end execute {} ...\n----------'.format(func.__name__)
         return result
     return wrapper
 

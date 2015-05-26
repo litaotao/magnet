@@ -11,27 +11,55 @@
 """
 
 import json
+from numpy.random import randint, rand
 
 # self-defined package
 from lib import server_addr, server_port, db
-from models import gen_user_context, print_func_name
+from lib.models import gen_user_context, print_func_name
 
 
 @print_func_name
-def gen_user(path):
-	'''
-	genernate test users from a file contains some test user name.
-	'''
-	data = json.load(file(path))
-	for i in data:
-		db['user'].insert(gen_user_context(i))
+def gen_user(test_user_path):
+    '''
+    genernate test users from a file contains some test user name.
+    '''
+    data = json.load(file(test_user_path))
+    db['user'].remove()
+    for i in data:
+        db['user'].insert(gen_user_context(i + '@datayes.com', '12345678'))
 
+@print_func_name
+def gen_link(test_user_path):
+    '''
+    genernate link.
+    '''
+    data = json.load(file(test_user_path))
+    number = len(data)
+    db['link'].remove()
+    for i in range(number):
+        for j in randint(0, number, randint(0, 10)):
+            if i != j:
+                db['link'].insert(dict(source = i, target = j, 
+                                       weight = randint(1, 10)))
 
+@print_func_name
+def gen_node(test_user_path):
+    '''
+    genernate node.
+    '''
+    data = json.load(file(test_user_path))
+    db['node'].remove()
+    for i in data:
+        db['node'].insert(dict(category=randint(1, 5), name=i, 
+                               value=randint(1, 10)))
 
 
 
 if __name__ == '__main__':
-	gen_user()
+    path = '/Users/chenshan/Desktop/user.txt'
+    gen_user(path)
+    gen_link(path)
+    gen_node(path)
 
 
 

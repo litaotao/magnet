@@ -20,12 +20,15 @@ from flask.ext.restful import Api
 
 
 cf = ConfigParser.ConfigParser()
-cf.read('../etc/magnet.conf')
-if cf.has_section('server'):
-    pass
-else:
+cf.read('etc/magnet.conf')
+if not cf.has_section('server'):
+    cf.read('../etc/magnet.conf')
+if not cf.has_section('server'):
     cf.read('../../etc/magnet.conf')
-
+if not cf.has_section('server'):
+    cf.read('../../../etc/magnet.conf')
+if not cf.has_section('server'):
+    cf.read('../../../../etc/magnet.conf')
 
 ## app server
 server_addr = cf.get('server', 'server_addr')
