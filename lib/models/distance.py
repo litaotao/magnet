@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def  age_distance(client, name, name_vec):
+def age_distance(client, name, name_vec):
 	'''
 	'''
 	res = {}
@@ -10,7 +10,7 @@ def  age_distance(client, name, name_vec):
 		res[i['name']] = abs(my_age-i['age'])/10. 
 	return res
 
-def  degree_distance(client, name, name_vec):
+def degree_distance(client, name, name_vec):
 	'''
 	'''
 	metric = dict(BS=0, MS=3, PHD=5)
