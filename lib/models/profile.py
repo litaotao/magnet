@@ -10,30 +10,28 @@
     :last updated: Mar.21st.2015
 """
 
+# official package
+from flask import request, redirect
+from flask.ext.restful import Resource
+from flask import Flask, request, send_file, Response, render_template
 
-def know_rate_me(user):
-    '''
-    Get the total number of people who knows me and the number
-    of people who rated me.
-    parameters:
-        user: user name
-    return:
-        total: the total number of people who knows me
-        rate:  the total number of people who rates me
-        new_score: my current score
-        rate_time: the total number of times people rate me
-    '''
-    # get know_me and rate_me
-    total = db['link'].find({'target': user}).count()
 
-    # get my new_score and rate_time
-    info = db['people'].find({'name': user})[0]
-    rate = len(info['people_rate_me'])
-    new_score = info['new_pr']
-    rate_time = info['ratetimes']
+from utils import build_response
+from analyst import calculate_rank
 
-    return dict(total = total, rate = rate, new_score = new_score, 
-                rate_time = rate_time)
+
+class Rank(Resource):
+    """用户排名信息"""
+    def get(self, rank_by, nickname):
+        '''
+        获取user的排名
+        '''
+        res = calculate_rank(nickname, rank_by)
+        return build_response(dict(code = 200, data = res))
+
+    def options(self):
+        return build_response(dict(code = 200, data = ['GET, OPTIONS']))
+
 
 
 

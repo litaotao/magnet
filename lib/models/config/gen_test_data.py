@@ -26,7 +26,7 @@ def gen_user(test_user_path):
     data = json.load(file(test_user_path))
     db['user'].remove()
     for i in data:
-        db['user'].insert(gen_user_context(i + '@datayes.com', '12345678'))
+        db['user'].insert(gen_user_context(i, '12345678', {'nickname': i.split('@')[0]}))
 
 @print_func_name
 def gen_link(test_user_path):
@@ -56,7 +56,8 @@ def gen_node(test_user_path):
 
 
 if __name__ == '__main__':
-    path = '/Users/chenshan/Desktop/user.txt'
+    # path = '/Users/chenshan/Desktop/user.txt'
+    path = 'C:\\Users\\taotao.li\\Desktop\\user.txt'
     gen_user(path)
     gen_link(path)
     gen_node(path)

@@ -1,42 +1,45 @@
 # -*- coding: utf-8 -*-
-from support import mongo_collect
 
-@mongo_collect
-def num_of_node_links(client):
-	'''
-	Get the number of people and relationships in total
-	'''
-	people = client.magnet.node.find().count()
-	relationships = client.magnet.links.find().count()
-	return people, relationships
+"""
+    analyst.py
+    ~~~~~~~~~~~~
 
-@mongo_collect
-def know_rate_me(client, user):
-	'''
-	Get the total number of people who knows me and the number
-	of people who rated me.
-	parameters:
-		user: user name
-	return:
-		total: the total number of people who knows me
-		rate:  the total number of people who rates me
-		new_score: my current score
-		rate_time: the total number of times people rate me
-	'''
-	# get know_me and rate_me
-	db = client.magnet.links
-	total = db.find({'target': user}).count()
+    Contains all the functions about calculating one's kinds of info.
 
-	# get my new_score and rate_time
-	db = client.magnet.people
-	info = db.find({'name': user})[0]
-	rate = len(info['people_rate_me'])
-	new_score = info['new_pr']
-	rate_time = info['ratetimes']
+    :Author: taotao.li
+    :last updated: Mar.27th.2015
+"""
 
-	return total, rate, new_score, rate_time
 
-if __name__ == '__main__':
-	people, relationships = num_of_node_links()
-	print people
-	print relationships
+# self-defined package
+from lib import server_addr, server_port, db
+
+
+def calculate_rank(nickname, rank_by):
+    '''
+    return the rank result by rank_way
+    rank_by: place, age, gender, degree, skill, field, school
+    '''
+    # import pdb; pdb.set_trace()
+    profile = dict(age = 0, school = '', degree = '', gender = '', location = '', nickname = '')
+    resume = dict(field = '', hobby = '', skill = '', tag = '')
+
+    if rank_by not in profile and rank_by not in resume:
+        return [0, 0]
+
+    #
+    tmp = db['user'].find({'profile.nickname': nickname}, {'_id': 0, 'profile': 1, 'resume': 1})[0]
+    dsl = ''
+    if rank_by in profile:
+        dsl = {'profile.' + rank_by : tmp['profile'].get(rank_by, '')}
+    elif rank_by in resume:
+        dsl = {'resume.' + rank_by : '/*{}*/'.format(tmp['resume'].get(rank_by, ''))}
+
+    dsl2 = {'user': 1, '_id': 0, 'relation': 1, 'profile': 1}
+    cursor = db['user'].find(dsl, dsl2).sort('relation.new_score')
+
+    tmp = list(cursor)
+    index = tmp.index([i for i in tmp if i['profile']['nickname'] == nickname].pop())
+
+    return [len(tmp), index]
+

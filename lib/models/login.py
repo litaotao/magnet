@@ -38,7 +38,7 @@ class Login(Resource):
         # import pdb; pdb.set_trace()
         user, pwd = request.form.get('user', ''), request.form.get('pwd', '')
         # # validate user and pwd
-        cursor = db['user'].find({'user': user}, {'pwd': 1, '_id': 1})
+        cursor = db['user'].find({'user': user}, {'pwd': 1, '_id': 1, 'profile': 1})
         # 
         if not cursor.count():
             return build_response(dict(code = -1, data = 'user not exist'))
@@ -49,12 +49,14 @@ class Login(Resource):
             # nodes, links = build_links_nodes(dst_to, src_to)
             # people, relationships = num_of_node_links()
             # know_me, rate_me, new_score, rate_time = know_rate_me(user)
+            data = cursor[0]
             totalUser, totalRelationship = gd.get_total_user_relation()
             totalKnowMe, rateMe, newScore = pd.know_rate_me(user)
+            nickName = data['profile']['nickname']
 
             return Response(render_template('index.html',
                             server = str(server_addr)+':'+str(server_port),
-                            user = user,
+                            nickName = nickName,
                             # global info
                             totalUser = totalUser,
                             totalRelationship = totalRelationship,

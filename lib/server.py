@@ -19,6 +19,7 @@ from . import app, api, admin_list
 
 # import models for API interface
 from models.login import Home, Login, Register, Validate
+from models.profile import Rank
 
 
 
@@ -40,6 +41,7 @@ api.add_resource(Home, '/')
 api.add_resource(Login, '/login')
 api.add_resource(Register, '/register')
 api.add_resource(Validate, '/validate')
+api.add_resource(Rank, '/ranking/<string:rank_by>/<string:nickname>')
 
 
 # # 1

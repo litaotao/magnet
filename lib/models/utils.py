@@ -11,6 +11,7 @@
 """
 
 from flask import request, redirect
+from numpy.random import randint, rand
 from functools import wraps
 from flask import make_response, jsonify, Response
 from lib import admin_list
@@ -27,8 +28,8 @@ def build_response(content, code=200):
 
 def gen_user_context(user, pwd, data = None):
     """Build an user context for a new user""" 
-    profile = dict(age = 0, school = '', degree = '', gender = '', location = '')
-    resume = dict(field = [], hobby = [], skill = [], tag = [])
+    profile = dict(age = str(randint(18, 50)), school = '', degree = '', gender = '', location = '', nickname = '')
+    resume = dict(field = '', hobby = '', skill = '', tag = '')
     relation = dict(record = [], new_score = 0) # record = [(), (),]
 
     if data:

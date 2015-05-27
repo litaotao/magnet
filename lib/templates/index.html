@@ -27,7 +27,7 @@
 	<script type="text/javascript">
 	window.onload = function(){
 		if(document.readyState == "complete"){
-			load_select_option();
+			load_data();
 		}
 	}
 	function close_window(){
@@ -56,9 +56,12 @@
 					<li>
 						<a id="number_2">There are {{totalRelationship}} relationships</a>
 					</li>
-					<li id="user" class="pull-right" >
-						<a id="first_time" onclick="user()" class="first_time" title="Your password is default, please click to change your password"><span class="glyphicon glyphicon-user first_time"></span> {{user}}</a>
+					<li id="nickname" class="pull-right" >
+						<a id="first_time" onclick="user()" class="first_time" title="Your password is default, please click to change your password"><span class="glyphicon glyphicon-user first_time"></span> {{nickName}}</a>
 					</li>
+					<!-- <li id="user" class="pull-right" > -->
+						<!-- <a id="first_time" onclick="user()" class="first_time" title="Your password is default, please click to change your password"><span class="glyphicon glyphicon-user first_time"></span> {{user}}</a> -->
+					<!-- </li> -->
                     <li id="stat_button" class="pull-right">
                         <a onclick="stat()"><span class="glyphicon glyphicon-stats"></span> Statistic</a>
                     </li>
